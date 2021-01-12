@@ -49,7 +49,10 @@ const App = {
     },
     nextOfFinish() {
       // кнопка вперед или закончить
-      if (this.isLastStep) return
+      if (this.isLastStep) {
+        this.isFinish = true
+        return
+      }
       this.activeIndex++
     },
     setActive(idx) {
@@ -65,8 +68,8 @@ const App = {
   computed: {
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
-    stepSelected() {
-      return this.activeIndex
+    currentStep() {
+      return this.steps[this.activeIndex]
     },
     // 2. выключена ли кнопка назад
     isPrevActive() {
